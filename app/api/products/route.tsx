@@ -3,8 +3,8 @@ import prisma from '@/prisma/client';
 import schema from './schema';
 
 export async function GET(request: NextRequest) {
-  const products = await prisma.product.findMany();
-  return NextResponse.json(products);
+  // const products = await prisma.product.findMany();
+  return NextResponse.json([]);
 }
 
 export async function POST(request: NextRequest) {
@@ -17,11 +17,11 @@ export async function POST(request: NextRequest) {
     });
   }
 
-  const newProduct = await prisma.product.create({
-    data: {
-      name: body.name,
-      price: body.price,
-    },
-  });
-  return NextResponse.json(newProduct, { status: 201 });
+  // const newProduct = await prisma.product.create({
+  //   data: {
+  //     name: body.name,
+  //     price: body.price,
+  //   },
+  // });
+  return NextResponse.json({}, { status: 201 });
 }

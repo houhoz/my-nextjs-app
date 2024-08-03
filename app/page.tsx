@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import ProductCard from './components/ProductCart';
 import { getServerSession } from 'next-auth';
-import { authOptions } from './api/auth/[...nextauth]/route';
+import { authOptions } from '@/app/lib/auth';
 
 export default async function Home() {
   const session = await getServerSession(authOptions);

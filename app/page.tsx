@@ -1,10 +1,11 @@
 'use client';
 
-import Link from 'next/link';
+// import Link from 'next/link';
 // import { getServerSession } from 'next-auth';
 // import { authOptions } from '@/app/lib/auth';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
+// import _ from 'lodash';
 
 const HeavyComponent = dynamic(
   () => import('@/app/components/HeavyComponent'),
@@ -22,13 +23,33 @@ export default function Home() {
       {/* <h1 className="font-mona">
         hello {session && <span>{session.user!.name}</span>}
       </h1> */}
-      <Link href="/users">Users</Link>
+      <span>Home Page</span>
       <div>
         <button
           className="btn"
           onClick={() => setIsVisible(!isVisible)}
         >
           {isVisible ? 'Hide' : 'Show'}
+        </button>
+      </div>
+
+      <div>
+        <button
+          className="btn"
+          onClick={async () => {
+            const _ = (await import('lodash')).default;
+
+            const users = [
+              { name: 'c' },
+              { name: 'b' },
+              { name: 'a' },
+            ];
+
+            const sorted = _.orderBy(users, ['name'], ['asc']);
+            console.log('sorted', sorted);
+          }}
+        >
+          lodash
         </button>
       </div>
 
